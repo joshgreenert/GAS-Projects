@@ -81,3 +81,15 @@ function ConvertToList() {
   var resultCell = rangeSheet.getRange("E4")
   resultCell.setValue(resultStr)
 }
+
+
+
+
+
+
+
+
+
+
+
+
