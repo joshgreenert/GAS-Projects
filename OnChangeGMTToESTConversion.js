@@ -24,6 +24,7 @@ function updateRowESTTime(e) {
       var gmtstring = ""
       var datestring = ""
       var period = ""
+      
       var hour
       var minutes
       var year
@@ -75,4 +76,19 @@ function updateRowESTTime(e) {
 
       sh.getRange(row, 11).setValue(datestring)
   }
+
+  deleteProjectTriggers()
+}
+
+function deleteProjectTriggers(){
+    // do some stuff here then stop the trigger(s) by name
+    var triggers = getProjectTriggersByName('updateRowESTTime');
+    for (var i = 0; i < triggers.length; ++i)
+        ScriptApp.deleteTrigger(triggers[i]);
+}
+
+function getProjectTriggersByName(name) {
+    return ScriptApp.getProjectTriggers().filter(
+        function(s) {return s.getHandlerFunction() === name;}
+    );
 }
